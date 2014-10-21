@@ -31,7 +31,7 @@ provided in the config-examples directory. A new service can be startet for
 instance by running
 
 ``` 
-docker run -v /xtreemfs_data:/xtreemfs_data -p 32640:32640 -t -d xtreemfs/xtreemfs-harness-osd:latest
+docker run -v /xtreemfs_data:/xtreemfs_data -p 32640:32640 -t -d xtreemfs/xtreemfs-osd:latest
 ```
 
 while the config is stored in /ssd/osdconfig.properties on the host. Network
