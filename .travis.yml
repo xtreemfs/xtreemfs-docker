@@ -1,3 +1,5 @@
+# taken from https://github.com/lukecyca/travis-docker-example
+
 install:
   - sudo sh -c "wget -qO- https://get.docker.io/gpg | apt-key add -"
   - sudo sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
@@ -10,4 +12,5 @@ install:
   - chmod +x linux
 
 script:
+  - sudo service docker.io start
   - sudo sh ./build.sh
