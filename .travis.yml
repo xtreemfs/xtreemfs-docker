@@ -10,4 +10,4 @@ install:
   - chmod +x linux
 
 script:
-  - sh ./build.sh
+  - sudo sh ./build.sh
