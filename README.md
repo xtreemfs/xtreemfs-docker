@@ -1,7 +1,9 @@
 Dockerfiles to run the XtreemFS services in containers.
 
 The images for the DIR, MRC, and OSD services are derived from a common image
-named xtreemfs/xtreemfs-common. After cloning the repositoring by running
+named xtreemfs/xtreemfs-common. The containers are build from the XtreemFS Git
+repository at https://github.com/xtreemfs/xtreemfs.git. After cloning the
+repositoring by running
 
 ```
 git clone https://github.com/xtreemfs/xtreemfs-docker.git
