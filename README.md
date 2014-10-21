@@ -41,7 +41,7 @@ instance by running
 docker run -v /xtreemfs_data:/xtreemfs_data -p 32640:32640 -t -d xtreemfs/xtreemfs-osd:latest
 ```
 
-while the config is stored in /ssd/osdconfig.properties on the host. Network
+while the config is stored in /xtreemfs_data/osdconfig.properties on the host. Network
 ports have to be mapped adequately while executing "docker run". Default ports
 are 32636 for the MRC, 32638 for the DIR, and 32640 for the OSD. You have to
 ensure that services register with the correct address at the DIR service, this
