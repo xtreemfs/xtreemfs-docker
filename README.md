@@ -1,5 +1,12 @@
 Dockerfiles to run the XtreemFS services in containers.
 
+Before building the XtreemFS images, ensure that you have the current Ubuntu
+baseimage by running
+
+```
+docker pull ubuntu
+```
+
 The images for the DIR, MRC, and OSD services are derived from a common image
 named xtreemfs/xtreemfs-common. The containers are build from the XtreemFS Git
 repository at https://github.com/xtreemfs/xtreemfs.git. After cloning the
