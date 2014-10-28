@@ -45,4 +45,4 @@ while the config is stored in /xtreemfs_data/osdconfig.properties on the host. N
 ports have to be mapped adequately while executing `docker run`. Default ports
 are 32636 for the MRC, 32638 for the DIR, and 32640 for the OSD. You have to
 ensure that services register with the correct address at the DIR service, this
-can be achieved by setting the `hostname` parameter for the MRC and OSD service.
+can be achieved by setting the "hostname" parameter for the MRC and OSD service.
