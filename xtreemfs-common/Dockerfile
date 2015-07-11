@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:14.04
 MAINTAINER Christoph Kleineweber <kleineweber@zib.de>
 
 ENV DEBIAN_FRONTEND noninteractive
