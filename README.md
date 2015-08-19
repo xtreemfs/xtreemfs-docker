@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/xtreemfs/xtreemfs-docker.svg?branch=master)](https://travis-ci.org/xtreemfs/xtreemfs-docker)
+
 Dockerfiles to run the XtreemFS services in containers.
 
 Before building the XtreemFS images, ensure that you have the current Ubuntu
