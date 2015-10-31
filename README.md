@@ -39,7 +39,7 @@ and osdconfig.properties. Example configuration files for each service are
 provided in the config-examples directory. A new service can be startet for
 instance by running
 
-``` 
+```
 docker run -v /xtreemfs_data:/xtreemfs_data -p 32640:32640 -t -d xtreemfs/xtreemfs-osd:latest
 ```
 
@@ -60,8 +60,10 @@ docker build -t xtreemfs/xtreemfs-client xtreemfs-client/
 
 You can run the XtreemFS client in an interactive container by executing
 
-``` 
+```
 docker run -t -i --privileged xtreemfs/xtreemfs-client /bin/bash
 ```
 
 Note that FUSE requires to run the container in the privileged mode.
+
+Please consider the XtreemFS user guide at http://xtreemfs.org/userguide.php and the quick start tutorial at http://xtreemfs.org/quickstart.php for a general introduction to XtreemFS.
