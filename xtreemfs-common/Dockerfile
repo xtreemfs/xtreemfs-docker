@@ -12,6 +12,6 @@ RUN apt-get -qy install curl make openjdk-7-jdk ant
 RUN curl -L -o archive.tgz https://github.com/xtreemfs/xtreemfs/archive/${RELEASE}.tar.gz && \
         tar xvfz archive.tgz && \
         mv xtreemfs-${RELEASE} xtreemfs && \
-        cd xtreemfs
+        cd xtreemfs && \
         make server
         
