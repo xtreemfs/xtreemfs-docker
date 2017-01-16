@@ -1,28 +1,31 @@
 # xtreemfs docker images
 
 xtreemfsdir:
-  image: xtreemfs/xtreemfs-dir
-  net: host
+  image: xtreemfs/xtreemfs-common
+  net: "host"
   volumes:
-    - "config-examples/:/xtreemfs_data"
+    - "./config-examples:/xtreemfs_data"
   ports:
     - "30638:30638"
     - "32638:32638"
+  command: dir
 
 xtreemfsmrc:
-  image: xtreemfs/xtreemfs-mrc
-  net: host
+  image: xtreemfs/xtreemfs-common
+  net: "host"
   volumes:
-    - "config-examples/:/xtreemfs_data"
+    - "./config-examples:/xtreemfs_data"
   ports:
     - "30636:30636"
     - "32636:32636"
+  command: mrc
 
 xtreemfsosd:
-  image: xtreemfs/xtreemfs-osd
-  net: host
+  image: xtreemfs/xtreemfs-common
+  net: "host"
   volumes:
-    - "config-examples/:/xtreemfs_data"
+    - "./config-examples:/xtreemfs_data"
   ports:
     - "30640:30640"
     - "32640:32640"
+  command: osd
