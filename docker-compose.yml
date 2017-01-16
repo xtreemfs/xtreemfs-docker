@@ -1,6 +1,6 @@
 # xtreemfs docker images
 
-xtreemfsdir:
+dir:
   image: xtreemfs/xtreemfs-common
   net: "host"
   volumes:
@@ -10,7 +10,7 @@ xtreemfsdir:
     - "32638:32638"
   command: dir
 
-xtreemfsmrc:
+mrc:
   image: xtreemfs/xtreemfs-common
   net: "host"
   volumes:
@@ -20,7 +20,7 @@ xtreemfsmrc:
     - "32636:32636"
   command: mrc
 
-xtreemfsosd:
+osd:
   image: xtreemfs/xtreemfs-common
   net: "host"
   volumes:
