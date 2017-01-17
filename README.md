@@ -1,15 +1,10 @@
 [![Build Status](https://travis-ci.org/xtreemfs/xtreemfs-docker.svg?branch=master)](https://travis-ci.org/xtreemfs/xtreemfs-docker)
 
+# XtreemFS Docker
+
 Dockerfiles to run the XtreemFS services in containers.
 
-Before building the XtreemFS images, ensure that you have the current Ubuntu
-baseimage by running
-
-```
-docker pull ubuntu
-```
-
-The images for the DIR, MRC, and OSD services are derived from a common image
+The the DIR, MRC, and OSD services are using a common image
 named xtreemfs/xtreemfs-common. The containers are build from the XtreemFS Git
 repository at https://github.com/xtreemfs/xtreemfs.git. After cloning the
 repositoring by running
@@ -25,14 +20,6 @@ start with building the xtreemfs/xtreemfs-common through executing
 docker build -t xtreemfs/xtreemfs-common xtreemfs-common/
 ```
 
-to build the common image. Continue with the service specific images
-
-```
-docker build -t xtreemfs/xtreemfs-dir xtreemfs-dir/
-docker build -t xtreemfs/xtreemfs-mrc xtreemfs-mrc/
-docker build -t xtreemfs/xtreemfs-osd xtreemfs-osd/
-```
-
 Service configuration files are expected to be mapped into /xtreemfs_data. The
 config files have to be named dirconfig.properties, mrcconfig.properties,
 and osdconfig.properties. Example configuration files for each service are
@@ -40,7 +27,7 @@ provided in the config-examples directory. A new service can be startet for
 instance by running
 
 ```
-docker run -v /xtreemfs_data:/xtreemfs_data -p 32640:32640 -t -d xtreemfs/xtreemfs-osd:latest
+docker run -v /xtreemfs_data:/xtreemfs_data -p 32640:32640 -t -d xtreemfs/xtreemfs:latest osd
 ```
 
 while the config is stored in /xtreemfs_data/osdconfig.properties on the host. Network
@@ -61,9 +48,45 @@ docker build -t xtreemfs/xtreemfs-client xtreemfs-client/
 You can run the XtreemFS client in an interactive container by executing
 
 ```
-docker run -t -i --privileged xtreemfs/xtreemfs-client /bin/bash
+docker run -t -i --privileged --net=host xtreemfs/xtreemfs-client /bin/bash
 ```
 
 Note that FUSE requires to run the container in the privileged mode.
 
-Please consider the XtreemFS user guide at http://xtreemfs.org/userguide.php and the quick start tutorial at http://xtreemfs.org/quickstart.php for a general introduction to XtreemFS.
+Please consider the XtreemFS user guide at http://xtreemfs.org/userguide.php and the quick
+start tutorial at http://xtreemfs.org/quickstart.php for a general introduction to XtreemFS.
+
+## Using docker-compose
+
+The easiest way to start up all the containers is with docker-compose.
+```
+dir:
+  image: xtreemfs/xtreemfs-common
+  net: "host"
+  volumes:
+    - "./config-examples:/xtreemfs_data"
+  ports:
+    - "30638:30638"
+    - "32638:32638"
+  command: dir
+
+mrc:
+  image: xtreemfs/xtreemfs-common
+  net: "host"
+  volumes:
+    - "./config-examples:/xtreemfs_data"
+  ports:
+    - "30636:30636"
+    - "32636:32636"
+  command: mrc
+
+osd:
+  image: xtreemfs/xtreemfs-common
+  net: "host"
+  volumes:
+    - "./config-examples:/xtreemfs_data"
+  ports:
+    - "30640:30640"
+    - "32640:32640"
+  command: osd
+```
