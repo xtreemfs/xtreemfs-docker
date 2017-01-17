@@ -1,13 +1,8 @@
 [![Build Status](https://travis-ci.org/xtreemfs/xtreemfs-docker.svg?branch=master)](https://travis-ci.org/xtreemfs/xtreemfs-docker)
 
+# XtreemFS Docker
+
 Dockerfiles to run the XtreemFS services in containers.
-
-Before building the XtreemFS images, ensure that you have the current Ubuntu
-baseimage by running
-
-```
-docker pull ubuntu:14.04
-```
 
 The the DIR, MRC, and OSD services are using a common image
 named xtreemfs/xtreemfs-common. The containers are build from the XtreemFS Git
@@ -58,4 +53,40 @@ docker run -t -i --privileged --net=host xtreemfs/xtreemfs-client /bin/bash
 
 Note that FUSE requires to run the container in the privileged mode.
 
-Please consider the XtreemFS user guide at http://xtreemfs.org/userguide.php and the quick start tutorial at http://xtreemfs.org/quickstart.php for a general introduction to XtreemFS.
+Please consider the XtreemFS user guide at http://xtreemfs.org/userguide.php and the quick
+start tutorial at http://xtreemfs.org/quickstart.php for a general introduction to XtreemFS.
+
+## Using docker-compose
+
+The easiest way to start up all the containers is with docker-compose.
+```
+dir:
+  image: xtreemfs/xtreemfs-common
+  net: "host"
+  volumes:
+    - "./config-examples:/xtreemfs_data"
+  ports:
+    - "30638:30638"
+    - "32638:32638"
+  command: dir
+
+mrc:
+  image: xtreemfs/xtreemfs-common
+  net: "host"
+  volumes:
+    - "./config-examples:/xtreemfs_data"
+  ports:
+    - "30636:30636"
+    - "32636:32636"
+  command: mrc
+
+osd:
+  image: xtreemfs/xtreemfs-common
+  net: "host"
+  volumes:
+    - "./config-examples:/xtreemfs_data"
+  ports:
+    - "30640:30640"
+    - "32640:32640"
+  command: osd
+```
