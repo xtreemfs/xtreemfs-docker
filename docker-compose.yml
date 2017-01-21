@@ -4,7 +4,7 @@ xtreemfsdir:
   image: xtreemfs/xtreemfs-dir
   net: host
   volumes:
-    - "config-examples/:/xtreemfs_data"
+    - "./config-examples:/xtreemfs_data"
   ports:
     - "30638:30638"
     - "32638:32638"
@@ -13,7 +13,7 @@ xtreemfsmrc:
   image: xtreemfs/xtreemfs-mrc
   net: host
   volumes:
-    - "config-examples/:/xtreemfs_data"
+    - "./config-examples:/xtreemfs_data"
   ports:
     - "30636:30636"
     - "32636:32636"
@@ -22,7 +22,7 @@ xtreemfsosd:
   image: xtreemfs/xtreemfs-osd
   net: host
   volumes:
-    - "config-examples/:/xtreemfs_data"
+    - "./config-examples:/xtreemfs_data"
   ports:
     - "30640:30640"
     - "32640:32640"
