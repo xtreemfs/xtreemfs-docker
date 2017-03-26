@@ -7,11 +7,12 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -qy update
 RUN apt-get -qy dist-upgrade
 
-RUN apt-get -qy install build-essential cmake libfuse-dev \
+RUN apt-get -qy install build-essential cmake fuse libfuse-dev \
     libattr1-dev libssl-dev libboost-system-dev libboost-thread-dev \
     libboost-program-options-dev libboost-regex-dev curl
 RUN curl -L -o archive.tgz https://github.com/xtreemfs/xtreemfs/archive/${RELEASE}.tar.gz && \
         tar xvfz archive.tgz && \
+        rm archive.tgz && \
         mv xtreemfs-${RELEASE} xtreemfs && \
         cd xtreemfs && \
         make client && \

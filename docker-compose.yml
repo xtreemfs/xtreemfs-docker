@@ -3,6 +3,8 @@
 dir:
   image: sorenroug/xtreemfs-common
   net: "host"
+  environment:
+    LANG: C.UTF-8
   volumes:
     - "./config-examples:/xtreemfs_data"
   ports:
@@ -13,6 +15,8 @@ dir:
 mrc:
   image: sorenroug/xtreemfs-common
   net: "host"
+  environment:
+    LANG: C.UTF-8
   volumes:
     - "./config-examples:/xtreemfs_data"
   ports:
@@ -23,6 +27,8 @@ mrc:
 osd:
   image: sorenroug/xtreemfs-common
   net: "host"
+  environment:
+    LANG: C.UTF-8
   volumes:
     - "./config-examples:/xtreemfs_data"
   ports:

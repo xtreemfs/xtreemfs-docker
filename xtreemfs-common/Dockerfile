@@ -3,6 +3,7 @@ MAINTAINER Christoph Kleineweber <kleineweber@zib.de>
 
 ENV RELEASE 1.5.1
 ENV DEBIAN_FRONTEND noninteractive
+ENV LANG C.UTF-8
 
 RUN apt-get -qy update
 RUN apt-get -qy dist-upgrade

@@ -13,8 +13,11 @@ case "$1" in
     osd) 
       exec $JAVA -ea -cp $CLASSPATH org.xtreemfs.osd.OSD /xtreemfs_data/osdconfig.properties
     ;;
+    sh|bash)
+      exec /bin/bash
+    ;;
     *)
-    echo $"Usage: $0 {dir|mrc|osd}" 1>&2
+    echo "Usage: $0 {dir|mrc|osd|sh}" 1>&2
     exit 2
     ;;
 esac
