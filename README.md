@@ -46,7 +46,7 @@ docker build -t sorenroug/xtreemfs-client xtreemfs-client/
 You can run the XtreemFS client in an interactive container by executing
 
 ```
-docker run -t -i --privileged --net=host -e LC_ALL=C.UTF-8 sorenroug/xtreemfs-client /bin/bash
+docker run -t -i --privileged --net=host -e LANG=C.UTF-8 sorenroug/xtreemfs-client /bin/bash
 ```
 
 Note that FUSE requires to run the container in the privileged mode.
@@ -64,7 +64,7 @@ dir:
   volumes:
     - "./config-examples:/xtreemfs_data"
   environment:
-    LC_ALL: C.UTF-8
+    LANG: C.UTF-8
   ports:
     - "30638:30638"
     - "32638:32638"
@@ -76,7 +76,7 @@ mrc:
   volumes:
     - "./config-examples:/xtreemfs_data"
   environment:
-    LC_ALL: C.UTF-8
+    LANG: C.UTF-8
   ports:
     - "30636:30636"
     - "32636:32636"
@@ -88,7 +88,7 @@ osd:
   volumes:
     - "./config-examples:/xtreemfs_data"
   environment:
-    LC_ALL: C.UTF-8
+    LANG: C.UTF-8
   ports:
     - "30640:30640"
     - "32640:32640"
