@@ -1,18 +1,28 @@
 # XtreemFS Docker
 
-Dockerfiles to run the XtreemFS services in containers.
+Dockerfiles to run the XtreemFS services in containers. The images are available
+on Docker Hub as `sorenroug/xtreemfs-common` and `sorenroug/xtreemfs-client`.
+You can try it out immediately by typing:
+```
+git clone https://github.com/sorenroug/xtreemfs-docker.git
+cd xtreemfs-docker
+docker-compose up -d
+```
+The server images will be downloaded and launched.
 
-The the DIR, MRC, and OSD services are using a common image
-named sorenroug/xtreemfs-common. The containers are build from the XtreemFS Git
-repository at https://github.com/xtreemfs/xtreemfs.git. After cloning the
-repositoring by running
+## How to build
+
+The DIR, MRC, and OSD services are using a common image
+named sorenroug/xtreemfs-common. The containers are built from the XtreemFS Git
+repository at https://github.com/xtreemfs/xtreemfs.git. You can clone the
+repositoring by running:
 
 ```
 git clone https://github.com/sorenroug/xtreemfs-docker.git
 cd xtreemfs-docker
 ```
 
-start with building the sorenroug/xtreemfs-common through executing
+Start with building the sorenroug/xtreemfs-common through executing
 
 ```
 docker build -t sorenroug/xtreemfs-common xtreemfs-common/
@@ -21,11 +31,12 @@ docker build -t sorenroug/xtreemfs-common xtreemfs-common/
 Service configuration files are expected to be mapped into /xtreemfs_data. The
 config files have to be named dirconfig.properties, mrcconfig.properties,
 and osdconfig.properties. Example configuration files for each service are
-provided in the config-examples directory. A new service can be startet for
+provided in the config-examples directory. A new service can be started for
 instance by running
 
 ```
-docker run -v /xtreemfs_data:/xtreemfs_data -p 32640:32640 -t -d sorenroug/xtreemfs-common:latest osd
+docker run -v /xtreemfs_data:/xtreemfs_data -p 32640:32640 -t -d \
+    sorenroug/xtreemfs-common:latest osd
 ```
 
 while the config is stored in /xtreemfs_data/osdconfig.properties on the host. Network
@@ -48,7 +59,6 @@ You can run the XtreemFS client in an interactive container by executing
 ```
 docker run -t -i --privileged --net=host -e LANG=C.UTF-8 sorenroug/xtreemfs-client /bin/bash
 ```
-
 Note that FUSE requires to run the container in the privileged mode.
 
 Please consider the XtreemFS user guide at http://xtreemfs.org/userguide.php and the quick
@@ -59,7 +69,7 @@ start tutorial at http://xtreemfs.org/quickstart.php for a general introduction 
 The easiest way to start up all the containers is with docker-compose.
 ```
 dir:
-  image: sorenroug/xtreemfs-common
+  image: sorenroug/xtreemfs-common:latest
   net: "host"
   volumes:
     - "./config-examples:/xtreemfs_data"
@@ -71,7 +81,7 @@ dir:
   command: dir
 
 mrc:
-  image: sorenroug/xtreemfs-common
+  image: sorenroug/xtreemfs-common:latest
   net: "host"
   volumes:
     - "./config-examples:/xtreemfs_data"
@@ -83,7 +93,7 @@ mrc:
   command: mrc
 
 osd:
-  image: sorenroug/xtreemfs-common
+  image: sorenroug/xtreemfs-common:latest
   net: "host"
   volumes:
     - "./config-examples:/xtreemfs_data"
