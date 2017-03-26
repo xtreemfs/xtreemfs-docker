@@ -1,7 +1,7 @@
 # xtreemfs docker images
 
 dir:
-  image: xtreemfs/xtreemfs-common
+  image: sorenroug/xtreemfs-common
   net: "host"
   volumes:
     - "./config-examples:/xtreemfs_data"
@@ -11,7 +11,7 @@ dir:
   command: dir
 
 mrc:
-  image: xtreemfs/xtreemfs-common
+  image: sorenroug/xtreemfs-common
   net: "host"
   volumes:
     - "./config-examples:/xtreemfs_data"
@@ -21,7 +21,7 @@ mrc:
   command: mrc
 
 osd:
-  image: xtreemfs/xtreemfs-common
+  image: sorenroug/xtreemfs-common
   net: "host"
   volumes:
     - "./config-examples:/xtreemfs_data"
