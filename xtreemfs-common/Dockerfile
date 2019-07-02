@@ -12,9 +12,11 @@ RUN apt-get -qy install \
     maven \
     openjdk-8-jdk
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-ENV JAVA_INCLUDE_PATH /usr/lib/jvm/java-8-openjdk-amd64/include
-ENV JAVA_INCLUDE_PATH2 /usr/lib/jvm/java-8-openjdk-amd64/include/linux
+RUN JAVA_HOME=$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | grep -oP "/.*")
+
+ENV JAVA_HOME ${JAVA_HOME}
+ENV JAVA_INCLUDE_PATH ${JAVA_HOME}/include
+ENV JAVA_INCLUDE_PATH2 ${JAVA_HOME}/include/linux
 
 RUN git clone --depth 1 https://github.com/xtreemfs/xtreemfs.git && \
     make -j`nproc` -C xtreemfs server
