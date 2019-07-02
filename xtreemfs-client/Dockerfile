@@ -3,7 +3,8 @@ MAINTAINER Christoph Kleineweber <kleineweber@zib.de>
 
 RUN apt-get -qy install cmake libfuse-dev \
     libattr1-dev libssl-dev libboost-system-dev libboost-thread-dev \
-    libboost-program-options-dev libboost-regex-dev
+    libboost-program-options-dev libboost-regex-dev \
+    valgrind default-jdk
 
 RUN cd xtreemfs && \
     make -j`nproc` client && \
