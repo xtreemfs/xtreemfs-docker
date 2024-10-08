@@ -1,5 +1,4 @@
 FROM xtreemfs/xtreemfs-common
-MAINTAINER Christoph Kleineweber <kleineweber@zib.de>
 
 RUN apt-get -qy install cmake libfuse-dev \
     libattr1-dev libssl-dev libboost-system-dev libboost-thread-dev \

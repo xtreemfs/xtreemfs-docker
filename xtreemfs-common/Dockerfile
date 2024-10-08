@@ -1,5 +1,4 @@
 FROM ubuntu:16.04
-MAINTAINER Christoph Kleineweber <kleineweber@zib.de>
 
 ENV DEBIAN_FRONTEND noninteractive
 
