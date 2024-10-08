@@ -2,11 +2,11 @@
 
 Dockerfiles to run the XtreemFS services in containers.
 
-Before building the XtreemFS images, ensure that you have the current Ubuntu
+Before building the XtreemFS images, ensure that you have the current Debian
 baseimage by running
 
 ```
-docker pull ubuntu
+docker pull debian:bookworm-slim
 ```
 
 The images for the DIR, MRC, and OSD services are derived from a common image
